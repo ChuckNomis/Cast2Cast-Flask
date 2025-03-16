@@ -1,0 +1,58 @@
+/* Header.css */
+.game-header {
+  text-align: center;
+  width: 100%;
+  }
+
+.game-header-container {
+  display: flex;
+  width: 100%; /* Full width */
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px; /* Reduce spacing between actors */
+}
+/* Left Actor - Sticks to the Left */
+.left-actor {
+  justify-content: flex-start; /* Left align */
+  margin-left: 40px;
+  
+}
+.header-center-container {
+  justify-content: center;
+  flex-direction: column;
+  gap: 0px;
+}
+.top-logo {
+  width: 10px;
+}
+.steps-counter {
+  position: relative; 
+  top: -30px; 
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+/* Right Actor - Sticks to the Right */
+.right-actor {
+  justify-content: flex-end; /* Right align */
+  margin-right: 40px;
+}
+/* Make actors responsive on mobile */
+@media (max-width: 768px) {
+    .game-header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .left-actor, .right-actor {
+        max-width: 100px; /* Reduce size on mobile */
+        margin: 0 10px; /* Space from the center logo */
+    }
+
+}
+

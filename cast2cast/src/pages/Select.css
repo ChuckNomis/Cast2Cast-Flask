@@ -1,0 +1,86 @@
+/* General Select Page Styles */
+.select-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Top Logo */
+.top-logo {
+  width: 150px;
+  margin-bottom: 40px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.top-logo:hover {
+  transform: scale(1.1);
+}
+
+/* Selected Actors Container */
+.selected-actors-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+}
+
+
+
+/* Arrow Icon */
+.arrow-icon {
+  width: 40px;
+  height: auto;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* Go & Reroll Buttons */
+.go-button,
+.reroll-button {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: #ffb74d;
+  padding: 10px 25px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease-in-out;
+}
+
+.go-button:hover,
+.reroll-button:hover {
+  transform: scale(1.05);
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+  .selected-actors-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .arrow-icon {
+    width: 35px;
+  }
+}
+
+/* Keep desktop layout */
+@media screen and (min-width: 1024px) {
+  .selected-actors-container {
+    flex-direction: row;
+  }
+}

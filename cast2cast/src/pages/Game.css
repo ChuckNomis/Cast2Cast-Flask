@@ -1,0 +1,105 @@
+/* General Game Styles */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Center card for the current actor or movie */
+.center-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 300px;
+  margin-top: 20px;
+}
+
+/* Grid layout for choices */
+.choices-grid {
+  display: flex; /* Use flexbox to keep everything in a row */
+  flex-wrap: wrap; /* Allows items to wrap to the next row */
+  justify-content: center; /* Centers items properly */
+  gap: 15px; /* Add space between items */
+  width: 100%;
+  max-width: 1200px;
+  padding: 10px;
+}
+
+/* Divider Line */
+.divider-line {
+  width: 80%;
+  height: 5px;
+  background-color: rgba(0, 102, 255, 0.8);
+  margin: 30px auto;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 102, 255, 0.8);
+}
+.win-popup{
+  color: aliceblue;
+  margin-top: 40px;
+  border-radius: 25px;
+  padding: 20px 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 25px;
+  gap: 50px;
+}
+.win-text-container{
+  font-family: "Lilita One", sans-serif;
+  font-size: 25px;
+}
+.win-buttons-container{
+  display: flex;
+  gap: 20px;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+  .game-container {
+    padding: 10px;
+  }
+
+  .center-card {
+    margin-top: -80px;
+    width: 90%;
+    max-width: 250px;
+  }
+  .movie-card {
+    width: 90px; /* Smaller actor cards */
+    height: 130px;
+}
+
+  .choices-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .divider-line {
+    width: 90%;
+    height: 3px;
+    margin-top: -30px;
+  }
+  .win-popup {
+    margin-top: -30px;
+    width: 90%;
+    padding: 15px;
+    gap: 20px;
+}
+
+  .win-text-container {
+    font-size: 20px; /* Smaller text */
+    text-align: center;
+}
+
+  .win-buttons-container {
+    flex-direction: column; /* Stack buttons on mobile */
+    gap: 30px;
+}
+  .ydi-img{
+    width: 100%;
+  }
+}

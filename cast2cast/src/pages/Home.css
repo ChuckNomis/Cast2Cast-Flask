@@ -1,0 +1,60 @@
+/* General Home Page Styles */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Game Logo */
+.home-logo {
+  width: 250px;
+  margin-top: 50px;
+}
+
+/* Buttons Container */
+.home-container-buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* How-to-Play Image Button */
+.questionbtn {
+  width: 350px;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+  .home-logo {
+    width: 180px;
+    margin-top: 80px;
+  }
+
+  .home-container-buttons {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .questionbtn {
+    width: 350px;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  
+}
+
+/* Keep original layout for large screens */
+@media screen and (min-width: 1024px) {
+  .home-logo {
+    width: 250px;
+  }
+  
+}

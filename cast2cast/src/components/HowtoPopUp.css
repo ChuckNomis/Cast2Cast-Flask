@@ -1,0 +1,134 @@
+/* Overlay (Background) */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Popup Box */
+.popup-content {
+  background: #222;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  box-shadow: 0px 0px 15px rgba(0, 102, 255, 0.5);
+  width: 520px;
+  max-width: 90%;
+  position: relative;
+  height: 400px;
+}
+
+/* Mobile-Friendly Popup */
+@media (max-width: 600px) {
+  .popup-content {
+      width: 90%;
+      height: auto;
+      padding: 20px;
+  }
+
+  .popup-title {
+      font-size: 50px; /* Smaller title */
+      margin-top: 10px;
+  }
+
+  .popup-text {
+      font-size: 18px; /* Smaller text */
+  }
+
+  .got-it-button {
+      font-size: 16px;
+      padding: 8px 15px;
+  }
+
+  .close-button {
+      top: 10px;
+      right: 10px;
+  }
+}
+
+/* Open Animations */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+.scale-up {
+  animation: scaleUp 0.3s ease-in-out forwards;
+}
+
+/* Close Animations */
+.fade-out {
+  animation: fadeOut 0.3s ease-in-out forwards;
+}
+.scale-down {
+  animation: scaleDown 0.3s ease-in-out forwards;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.9); }
+  to { transform: scale(1); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes scaleDown {
+  from { transform: scale(1); }
+  to { transform: scale(0.9); }
+}
+
+/* Close Button */
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.close-button:hover {
+  transform: scale(1.2);
+}
+
+/* Got it! Button */
+.got-it-button {
+  background: #7fa6db;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.got-it-button:hover {
+  transform: scale(1.05);
+}
+
+/* Text Styles */
+.popup-text {
+  font-size: 25px;
+  font-family: "Lilita One", sans-serif;
+}
+
+.popup-title {
+  margin-top: 20px;
+  font-size: 80px;
+  font-family: "Lilita One", sans-serif;
+}

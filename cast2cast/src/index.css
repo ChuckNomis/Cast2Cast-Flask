@@ -1,0 +1,79 @@
+body {
+    background-color: #181818; /* Change this to your desired color */
+}
+/* Card Container */
+.movie-card, .actor-card {
+  position: relative;
+  width: 180px; /* Adjust to match the design */
+  height: 230px;
+  border-radius: 15px;
+  border: rgba(255, 255, 255, 0.363) solid;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px #7EA6D6; /* Depth effect */
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Image inside the card */
+.movie-image, .actor-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* Title Overlay */
+.movie-title, .actor-title {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.823); /* Dark overlay */
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 0;
+  font-family: "Rubik", sans-serif;
+}
+
+/* Hover Effect */
+.movie-card:hover, .actor-card:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.button {
+  font-family: "Lilita One", sans-serif;
+  font-size: 45px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  background-color: #7ea6d6df; /* Darker Blue */
+  border: none;
+  padding: 15px 50px;
+  border-radius: 30px; /* Fully rounded */
+  cursor: pointer;
+  box-shadow: 6px 6px 0px #ffffff, 8px 8px 0px rgba(213, 187, 187, 0.5); /* White & dark shadow */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Hover Effect */
+.button:hover {
+  transform: scale(1.02);
+  background-color: #2B4E82; /* Slightly lighter blue */
+  box-shadow: 7px 7px 0px #ffffff, 9px 9px 0px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+.movie-card, .actor-card {
+  width: 90px; /* Smaller actor cards */
+  height: 130px;
+}
+.movie-card,.actor-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.movie-card,.actor-title {
+  font-size: 14px; /* Smaller text */
+}
+}
