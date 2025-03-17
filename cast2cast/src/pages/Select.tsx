@@ -18,17 +18,45 @@ const Select = () => {
 
   // Function to fetch random actors
   const loadActors = async () => {
-    setLoading(true);
-    let actor1 = await fetchRandomActor();
-    let actor2 = await fetchRandomActor();
-    while (actor2.id === actor1.id) {
-      actor2 = await fetchRandomActor();
+    try {
+      setLoading(true);
+      let actor1 = null;
+      let actor2 = null;
+      let retries = 0;
+      // Retry fetching actors if null is returned
+      while (!actor1 && retries < 5) {
+        actor1 = await fetchRandomActor();
+        retries++;
+      }
+      retries = 0;
+      while ((!actor2 || actor2.id === actor1.id) && retries < 5) {
+        actor2 = await fetchRandomActor();
+        retries++;
+      }
+      // If still null, stop execution
+      if (!actor1 || !actor2) {
+        console.error("Failed to fetch valid actors.");
+        setLoading(false);
+        return;
+      }
+      console.log("Actor 1:", actor1);
+      console.log("Actor 2:", actor2);
+      // Fetch additional actor data
+      let actor1Data = await fetchActorById(actor1.id);
+      let actor2Data = await fetchActorById(actor2.id);
+      // Ensure fetched data is valid before setting state
+      if (!actor1Data || !actor2Data) {
+        console.error("Failed to fetch full actor details.");
+        setLoading(false);
+        return;
+      }
+      setStartActor(actor1Data);
+      setTargetActor(actor2Data);
+    } catch (error) {
+      console.error("Error in loadActors:", error);
+    } finally {
+      setLoading(false);
     }
-    let actor1Data = await fetchActorById(actor1.id);
-    let actor2Data = await fetchActorById(actor2.id);
-    setStartActor(actor1Data);
-    setTargetActor(actor2Data);
-    setLoading(false);
   };
 
   // Reroll actors by fetching new ones

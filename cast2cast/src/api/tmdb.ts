@@ -57,6 +57,7 @@ export const fetchRandomActor = async () => {
       if (
         fullActor &&
         fullActor.place_of_birth &&
+        fullActor.profile_path &&
         !excludedNationalities.some((country) => fullActor.place_of_birth.includes(country))
       ) {
         actor = fullActor; // ✅ Valid actor found
