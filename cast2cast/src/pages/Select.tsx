@@ -39,8 +39,7 @@ const Select = () => {
         setLoading(false);
         return;
       }
-      console.log("Actor 1:", actor1);
-      console.log("Actor 2:", actor2);
+
       // Fetch additional actor data
       let actor1Data = await fetchActorById(actor1.id);
       let actor2Data = await fetchActorById(actor2.id);

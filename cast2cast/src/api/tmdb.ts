@@ -1,4 +1,5 @@
 import axios from "axios";
+import actorsData from "../assets/actors.json";
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
@@ -34,33 +35,29 @@ const filterAndSortActors = (cast: any[]) => {
     .sort((a, b) => b.popularity - a.popularity); // Sort by popularity (descending)
 };
 
-// Fetch a random actor (no sorting needed)
+
+
 export const fetchRandomActor = async () => {
   try {
     let actor = null;
     let attempts = 0;
     const excludedNationalities = ["Japan", "India", "South Korea", "China", "Pakistan"];
 
-    while (!actor && attempts < 10) { // Max 10 retries to prevent infinite loops
-      const randomPage = Math.floor(Math.random() * 10) + 1; // Randomize page selection
-      const response = await apiClient.get(`/person/popular`, {
-        params: { page: randomPage },
-      });
+    while (!actor && attempts < 10) { // Max 10 retries
+      const randomIndex = Math.floor(Math.random() * actorsData.actors.length);
+      const actorId = actorsData.actors[randomIndex];
 
-      const actors = response.data.results;
-      const selectedActor = actors[Math.floor(Math.random() * actors.length)];
+      // Fetch actor details
+      const fullActor = await fetchActorById(actorId);
 
-      // Fetch full actor details
-      const fullActor = await fetchActorById(selectedActor.id);
-
-      // Check if the actor should be excluded
+      // Check if actor is valid and doesn't match excluded nationalities
       if (
         fullActor &&
-        fullActor.place_of_birth &&
         fullActor.profile_path &&
+        fullActor.place_of_birth &&
         !excludedNationalities.some((country) => fullActor.place_of_birth.includes(country))
       ) {
-        actor = fullActor; // ✅ Valid actor found
+        actor = fullActor;
       }
 
       attempts++;
@@ -72,6 +69,9 @@ export const fetchRandomActor = async () => {
     return null;
   }
 };
+
+
+
 
 
 //Get Actor Data by ID
