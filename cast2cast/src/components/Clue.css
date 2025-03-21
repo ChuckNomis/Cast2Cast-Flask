@@ -1,16 +1,16 @@
 /* Overlay (Background) */
 .popup-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
 
 /* Popup Box */
-.popup-content {
+.clue-content {
   background: #222;
   padding: 30px;
   border-radius: 15px;
@@ -20,8 +20,17 @@
   width: 520px;
   max-width: 90%;
   position: relative;
-  height: 325px;
+  height: 450px;
 }
+.movies-section{
+  display: flex; /* Use flexbox to keep everything in a row */
+  justify-content: center; /* Centers items properly */
+  gap: 15px; /* Add space between items */
+  width: 100%;
+  max-width: 1200px;
+  padding: 10px;
+}
+
 
 /* Mobile-Friendly Popup */
 @media (max-width: 600px) {
@@ -44,13 +53,12 @@
       font-size: 16px;
       padding: 8px 15px;
   }
+  .clue-content {
 
-  .close-button {
-      top: 10px;
-      right: 10px;
+    height: 380px;
   }
-}
 
+}
 /* Open Animations */
 .fade-in {
   animation: fadeIn 0.3s ease-in-out forwards;
@@ -88,26 +96,12 @@
   to { transform: scale(0.9); }
 }
 
-/* Close Button */
-.close-button {
-  background: none;
-  border: none;
-  color: white;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-}
-
-.close-button:hover {
-  transform: scale(1.2);
-}
 
 /* Got it! Button */
 .got-it-button {
+  margin-top: 10px;
   background: #7fa6db;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 18px;
   font-weight: bold;
   padding: 10px 20px;
@@ -123,12 +117,16 @@
 
 /* Text Styles */
 .popup-text {
+  margin-top: -35px;
   font-size: 25px;
+  color: #7fa6db;
   font-family: "Lilita One", sans-serif;
 }
 
 .popup-title {
-  margin-top: 20px;
+  margin-top: -10px;
+  color: #7fa6db;
   font-size: 80px;
   font-family: "Lilita One", sans-serif;
 }
+

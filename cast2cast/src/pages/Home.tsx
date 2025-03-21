@@ -16,7 +16,7 @@ const Home = () => {
         <button className="button" onClick={() => navigate("/Select")}>
           START
         </button>
-        {/* Settings Button */}
+        {/* How to play Button */}
         <button
           className="button questionbtn"
           onClick={() => setShowPopup(true)}

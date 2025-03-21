@@ -2,8 +2,7 @@
 .game-header {
   text-align: center;
   width: 100%;
-  }
-
+}
 .game-header-container {
   display: flex;
   width: 100%; /* Full width */
@@ -26,7 +25,14 @@
   width: 10px;
 }
 .steps-counter {
+  text-align: center;
+  margin-top: 20px;
+  background-color: #7EA6D6;
   position: relative; 
+  border-radius: 15px;
+  border: rgba(255, 255, 255, 0.363) solid;
+  overflow: hidden;
+  padding: 2px 5px;
   top: -30px; 
   color: white;
   font-size: 30px;
@@ -34,25 +40,54 @@
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.clue-button{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  background-color: #7EA6D6; /* Darker Blue */
+  border: none;
+  padding: 15px 20px;
+  border-radius: 25px; /* Fully rounded */
+  cursor: pointer;
+  box-shadow: 6px 6px 0px #ffffff, 8px 8px 0px rgba(213, 187, 187, 0.5); /* White & dark shadow */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  margin-top: 20px;
+}
+
+/* Hover Effect */
+.clue-button:hover {
+  transform: scale(1.02);
+  background-color: #2B4E82; /* Slightly lighter blue */
+  box-shadow: 7px 7px 0px #ffffff, 9px 9px 0px rgba(0, 0, 0, 0.5);
+}
 
 /* Right Actor - Sticks to the Right */
-.right-actor {
+.right-side-actor {
+  margin-top: 70px;
   justify-content: flex-end; /* Right align */
   margin-right: 40px;
 }
 /* Make actors responsive on mobile */
 @media (max-width: 768px) {
-    .game-header-container {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-    }
-
-    .left-actor, .right-actor {
-        max-width: 100px; /* Reduce size on mobile */
-        margin: 0 10px; /* Space from the center logo */
-    }
+  .game-header-container {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+  }
+  .left-actor, .right-actor {
+      max-width: 100px; /* Reduce size on mobile */
+      margin: 0 10px; /* Space from the center logo */
+  }
+  /* Right Actor - Sticks to the Right */
+  .right-side-actor {
+    margin-right: 15px;
+  }
+  .clue-button{
+    font-size: 15px;
+  }
 
 }
 
