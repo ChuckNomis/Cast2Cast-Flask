@@ -34,21 +34,19 @@ const Header: React.FC<HeaderProps> = ({ actor1, actor2, steps }) => {
               onClick={handleLogoClick}
             />
             <div className="steps-counter">
-              <h3>Steps - {steps}</h3>
-            </div>
-          </div>
-          <div className="right-side-actor">
-            <div className="actor-card">
-              <img
-                src={`https://image.tmdb.org/t/p/w300${actor2.profile_path}`}
-                alt={actor2.name}
-                className="actor-image"
-              />
-              <div className="actor-title">{actor2.name}</div>
+              <h3>Moves - {steps}</h3>
             </div>
             <button className="clue-button" onClick={() => setShowPopup(true)}>
               Clue
             </button>
+          </div>
+          <div className="actor-card right-actor">
+            <img
+              src={`https://image.tmdb.org/t/p/w300${actor2.profile_path}`}
+              alt={actor2.name}
+              className="actor-image"
+            />
+            <div className="actor-title">{actor2.name}</div>
           </div>
           {/* Show the popup only when triggered */}
           {showPopup && (
