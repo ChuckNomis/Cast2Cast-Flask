@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { fetchMoviesByActor, fetchCastByMovie } from "../api/tmdb";
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use"; // Import this for responsive confetti
 import Header from "../components/Header";
 import YouDidItPhoto from "../assets/YouDidIt.png";
 import "./Game.css";
@@ -15,6 +17,8 @@ const Game = () => {
   const [currentCast, setCurrentCast] = useState<any[]>([]);
   const [steps, setSteps] = useState(0);
   const [gameWon, setGameWon] = useState(false);
+  const { width, height } = useWindowSize(); // For fullscreen confetti
+  const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
     if (currentActor) {
@@ -49,26 +53,37 @@ const Game = () => {
 
   const win = () => {
     setGameWon(true);
+    setShowConfetti(true);
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 5000); // 5 seconds
   };
 
   return (
     <div className="game-container">
       <Header actor1={startActor} actor2={targetActor} steps={steps} />
+
       {gameWon ? (
-        <div className="win-popup">
-          <img className="ydi-img" src={YouDidItPhoto} alt="YouDidIt-img" />
-          <div className="win-text-container">
-            You found {targetActor?.name} in {steps} steps!
+        <>
+          {showConfetti && (
+            <Confetti width={width} height={height} numberOfPieces={300} />
+          )}
+          {/* Confetti Component */}
+          <div className="win-popup">
+            <img className="ydi-img" src={YouDidItPhoto} alt="YouDidIt-img" />
+            <div className="win-text-container">
+              You found {targetActor?.name} in {steps} steps!
+            </div>
+            <div className="win-buttons-container">
+              <button className="button" onClick={() => navigate("/Select")}>
+                Play Again
+              </button>
+              <button className="button" onClick={() => navigate("/")}>
+                Home
+              </button>
+            </div>
           </div>
-          <div className="win-buttons-container">
-            <button className="button" onClick={() => navigate("/Select")}>
-              Play Again
-            </button>
-            <button className="button" onClick={() => navigate("/")}>
-              Home
-            </button>
-          </div>
-        </div>
+        </>
       ) : (
         <>
           <div className="center-card">
@@ -94,7 +109,7 @@ const Game = () => {
             )}
           </div>
 
-          {/*Separator Line Between Center Card & Movies*/}
+          {/* Separator Line Between Center Card & Movies */}
           <div className="divider-line"></div>
 
           <div className="choices-grid">
