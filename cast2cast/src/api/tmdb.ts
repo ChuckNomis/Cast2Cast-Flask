@@ -1,11 +1,16 @@
 
 
+import axios from "axios";
+
+// Flask Server URL
+const BASE_URL = "http://localhost:5000";
+
+
 //Get random Actor
 export const fetchRandomActor = async () => {
   try {
-    const response = await fetch(`/.netlify/functions/fetchRandomActor`);
-    const actor = await response.json();
-    return actor;
+    const response = await axios.get(`${BASE_URL}/fetchRandomActor`);
+    return response.data;
   } catch (error) {
     console.error("Error fetching random actor:", error);
     return null;
@@ -16,9 +21,10 @@ export const fetchRandomActor = async () => {
 //Get Actor Data by ID
 export const fetchActorById = async (actorId: number) => {
   try {
-    const response = await fetch(`/.netlify/functions/fetchActor?actorId=${actorId}`);
-    const data = await response.json();
-    return data; // Returns full actor details
+    const response = await axios.get(`${BASE_URL}/fetchActor`, {
+      params: {actorId},
+    });
+    return response.data;
   } catch (error) {
     console.error(`Error fetching actor with ID ${actorId}:`, error);
     return null;
@@ -28,9 +34,10 @@ export const fetchActorById = async (actorId: number) => {
 // Fetch movies by actor (filtered & sorted)
 export const fetchMoviesByActor = async (actorId: number) => {
   try {
-    const response = await fetch(`/.netlify/functions/fetchMovies?actorId=${actorId}`);
-    const data = await response.json();
-    return data;
+    const response = await axios.get(`${BASE_URL}/fetchMovies`, {
+      params: {actorId},
+    });
+    return response.data;
   } catch (error) {
     console.error(`Error fetching movies for actor ${actorId}:`, error);
     return [];
@@ -40,9 +47,10 @@ export const fetchMoviesByActor = async (actorId: number) => {
 // Fetch cast by movie (filtered & sorted)
 export const fetchCastByMovie = async (movieId: number) => {
   try {
-    const response = await fetch(`/.netlify/functions/fetchCast?movieId=${movieId}`);
-    const data = response.json();
-    return data;
+    const response = await axios.get(`${BASE_URL}/fetchCast`,{
+      params: {movieId},
+    });
+    return response.data;
   } catch (error) {
     console.error(`Error fetching cast for movie ${movieId}:`, error);
     return [];
